@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Products from './components/products';
 
 
 class App extends React.Component {
@@ -15,9 +15,7 @@ class App extends React.Component {
                     <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ads/?r=' + Math.floor(Math.random()*1000) + '" />');</script>
                 </header>
 
-                <section class="products">
-                    ... products go here ...
-                </section>
+               <Products/>
             </div>
         )
     }

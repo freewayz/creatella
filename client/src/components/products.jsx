@@ -27,6 +27,7 @@ class Products extends React.Component {
                     state.products.map((item, index) => {
                         return (
                             <Product
+                                face={item.face}
                                 size={item.size}
                                 price={item.price}
                                 date={item.date}

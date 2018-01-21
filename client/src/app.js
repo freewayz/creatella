@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Products from './components/products';
+import Products from './components/products.jsx';
 
 
 class App extends React.Component {

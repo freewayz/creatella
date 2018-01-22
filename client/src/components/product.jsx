@@ -1,4 +1,5 @@
 import React from 'react';
+import {centToDollar} from '../utils';
 
 /**
  * Use a functional react component for the product item
@@ -13,7 +14,7 @@ function Product(props) {
                 Font
             </div>
             <div> Size {props.size} </div>
-            <div> Price: {props.price} </div>
+            <div> Price: {centToDollar(props.price)} </div>
             <div>Date: {props.date} </div>
         </div >
     )

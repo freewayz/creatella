@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export function getProducts() {
-    return axios.get('/api/products?_page=10&_limit=15');
+export function getProducts(page, limit) {
+    return axios.get(`/api/products?_page=${page}&_limit=${limit}`);
 }

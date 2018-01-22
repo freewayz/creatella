@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Products from './components/products.jsx';
-
+import './app.scss'
 
 class App extends React.Component {
     render() {

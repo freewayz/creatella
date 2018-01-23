@@ -5,17 +5,22 @@ body {
 .app {
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;   
+    max-width: 60%;
+     
 }
 
+.filters { 
+    flex: 1;
+    display: flex;
+}
 
 .products {
     display: flex;
+    flex: 2;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    max-width: 60%;
-
 
     .product {
         display: flex;

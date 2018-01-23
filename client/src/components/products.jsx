@@ -1,5 +1,7 @@
 import React from 'react';
 import Product from './product.jsx';
+import Filter from './filters.jsx';
+
 import { getProducts } from '../services/product.service';
 
 class Products extends React.Component {
@@ -49,8 +51,8 @@ class Products extends React.Component {
 
     handleBottomScroll(event) {
         event.preventDefault();
-        const scrollTop = (document.documentElement && document.documentElement.scrollTop ) || document.body.scrollTop;
-        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight ) || document.body.scrollHeight;
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
 
         const shouldScrollToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
@@ -62,27 +64,31 @@ class Products extends React.Component {
     render() {
         const { state } = this;
         return (
-            <section className="products">
-                {
-                    state.products.map((item, index) => {
-                        return (
-                            <Product
-                                face={item.face}
-                                size={item.size}
-                                price={item.price}
-                                date={item.date}
-                            />
-                        )
-                    })
-                }
-                {
-                    state.isLoading ? (
-                        <div>{state.loadingText}</div>
-                    ) : (
-                        <div></div>
-                    )
-                }
-            </section>
+            <div className="container">
+                <Filter />
+                <div className="content">
+                    <section className="products">
+                        {
+                            state.products.map((item, index) => {
+                                return (
+                                    <Product
+                                        face={item.face}
+                                        size={item.size}
+                                        price={item.price}
+                                        date={item.date}
+                                    />
+                                )
+                            })
+                        }
+                    </section>
+                    <div className="loader">
+                        {
+                            state.isLoading ? (<div>{state.loadingText}</div>) : (<div></div>)
+                        }
+                    </div>
+                </div>
+            </div>
+
         )
     }
 }

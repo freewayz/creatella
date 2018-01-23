@@ -36,7 +36,6 @@ class Products extends React.Component {
         this.setState({
             isLoading: true
         });
-        console.log('Bottom scrolling')
         getProducts(this.state.page, this.state.limit).then((response) => {
 
             this.setState((prevState, prevProps) => ({
@@ -55,8 +54,6 @@ class Products extends React.Component {
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
 
         const shouldScrollToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-        console.log('shouldScrollToBottom => ')
-        console.log(shouldScrollToBottom)
         if (shouldScrollToBottom) {
             this.loadMoreProduct();
         }
@@ -65,7 +62,7 @@ class Products extends React.Component {
     render() {
         const { state } = this;
         return (
-            <section class="products">
+            <section className="products">
                 {
                     state.products.map((item, index) => {
                         return (

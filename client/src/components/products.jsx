@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from './product.jsx';
-import Filter from './filters.jsx';
+import Sorter from './sorter.jsx';
 
 import { getProducts } from '../services/product.service';
 
@@ -60,8 +60,8 @@ class Products extends React.Component {
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
 
-        const shouldScrollToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-        if (shouldScrollToBottom) {
+        const reachedBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        if (reachedBottom) {
             this.loadMoreProduct();
         }
     }
@@ -70,7 +70,7 @@ class Products extends React.Component {
         const { state } = this;
         return (
             <div className="container">
-                <Filter />
+                <Sorter />
                 <div className="content">
                     <section className="products">
                         {

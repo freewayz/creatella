@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Filter extends React.Component {
+class Sorter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,11 +12,12 @@ class Filter extends React.Component {
         }
     }
 
+
     render() {
         const { state } = this;
         return (
-            <div className="filters">
-                <div className="filter-item">
+            <div className="sorter">
+                <div className="action">
                     <select> 
                         {
                             state.sortOptions.map((item, index) => {
@@ -34,4 +35,4 @@ class Filter extends React.Component {
     }
 }
 
-export default Filter;
+export default Sorter;

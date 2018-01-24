@@ -2,10 +2,10 @@ import React from 'react';
 
 function HeaderNav(props) {
     return (
-        <header>
-            <div>
+        <header className="nav-header">
+           <h2>
             CREATELA FONT STORE
-            </div>
+           </h2>
         </header>
     )
 }

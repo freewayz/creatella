@@ -91,7 +91,8 @@ class Products extends React.Component {
                         {
                             state.products.map((item, index) => {
                                 // let show our add after every 20 products
-                                if (index % 20 === 0) {
+                                // dont put add on the first product row
+                                if (index % 20 === 0 && index !==  0 ) {
                                     return (
                                         <Ads/>
                                     )

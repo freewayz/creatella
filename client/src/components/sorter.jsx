@@ -5,9 +5,9 @@ class Sorter extends React.Component {
         super(props);
         this.state = {
             sortOptions: [
-                { id: 'size', text: 'By Size' },
-                { id: 'price', text: 'By Price' },
-                { id: 'id', text: 'By Font Ids' }
+                { id: 'size', text: 'Size' },
+                { id: 'price', text: 'Price' },
+                { id: 'id', text: 'Font Ids' }
             ],
             selectedAction: null,
         };
@@ -28,11 +28,12 @@ class Sorter extends React.Component {
         return (
             <div className="sorter">
                 <div className="action">
+                    <label htmlFor="">Sort By</label>
                     <select 
                     value={state.selectedAction}
                     onChange={this.handleSelectChange}
                     > 
-                        <option value="" selected disabled>Sort Products</option>
+                        <option value="" selected disabled>Choose</option>
                         {
                             state.sortOptions.map((item, index) => {
                                 return (

@@ -10,15 +10,12 @@ function Product(props) {
     }
     return (
         <div className="product">
-            <div style={{ fontFamily: props.face, fontSize: props.size }}>
-                Font
+            <div style={{ fontSize: props.size }}>
+                { props.face }
             </div>
-            <div>Size {props.size} </div>
-            <div>Price: {centToDollar(props.price)} </div>
-            <div>Date: {readableDate(props.date)} </div>
-            <div className="buy-button">
-                <button>Buy</button>
-            </div>
+            <div className="price">US {centToDollar(props.price)} / Size { props.size }</div>
+            <div>{readableDate(props.date)} </div>
+            <button className="btn-cart">Add to Cart</button>
         </div >
     )
 }

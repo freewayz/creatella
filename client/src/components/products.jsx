@@ -11,7 +11,7 @@ class Products extends React.Component {
             isLoading: false,
             loadingText: 'loading.....',
             page: 1,
-            limit: 20,
+            limit: 10,
             sortType: null,
         };
         this.handleBottomScroll = this.handleBottomScroll.bind(this);
@@ -36,10 +36,10 @@ class Products extends React.Component {
         });
     }
 
-    handleSortAction(action) {
+    handleSortAction(byType) {
         const currentProducts =  this.state.products;
         currentProducts.sort((first, second) => {
-            return parseInt(first.price - second.price);
+            return parseInt(first[byType] - second[byType]);
         });
         this.setState({
             products: currentProducts

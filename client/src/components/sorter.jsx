@@ -32,6 +32,7 @@ class Sorter extends React.Component {
                     value={state.selectedAction}
                     onChange={this.handleSelectChange}
                     > 
+                        <option value="" selected disabled>Sort Products</option>
                         {
                             state.sortOptions.map((item, index) => {
                                 return (

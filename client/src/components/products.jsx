@@ -12,7 +12,7 @@ class Products extends React.Component {
             isLoading: false,
             loadingText: 'loading.....',
             page: 1,
-            limit: 15,
+            limit: 20,
         };
         this.handleBottomScroll = this.handleBottomScroll.bind(this);
     }
@@ -39,11 +39,16 @@ class Products extends React.Component {
             isLoading: true
         });
         getProducts(this.state.page, this.state.limit).then((response) => {
-
-            this.setState((prevState, prevProps) => ({
-                products: prevState.products.concat(response.data),
-                page: prevState.page + 1
-            }));
+            if (response.data.length < 1) {
+                this.setState({
+                    loadingText: '~ end of catalogue ~'
+                });
+            } else {
+                this.setState((prevState, prevProps) => ({
+                    products: prevState.products.concat(response.data),
+                    page: prevState.page + 1
+                }));
+            }
         }).catch((err) => {
             //todo show some error or no product found
         });

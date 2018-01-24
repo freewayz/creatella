@@ -16,6 +16,9 @@ function Product(props) {
             <div>Size {props.size} </div>
             <div>Price: {centToDollar(props.price)} </div>
             <div>Date: {readableDate(props.date)} </div>
+            <div className="buy-button">
+                <button>Buy</button>
+            </div>
         </div >
     )
 }

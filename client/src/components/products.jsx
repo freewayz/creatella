@@ -72,7 +72,6 @@ class Products extends React.Component {
         const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
-
         const reachedBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
         if (reachedBottom) {
             this.loadMoreProduct();
@@ -111,7 +110,7 @@ class Products extends React.Component {
                     </section>
                     <div className="loader">
                         {
-                            state.isLoading ? (<div>{state.loadingText}</div>) : (<div></div>)
+                            state.isLoading ? (<div className="title">{state.loadingText}</div>) : (<div></div>)
                         }
                     </div>
                 </div>

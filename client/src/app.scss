@@ -48,7 +48,7 @@ body {
         box-sizing: border-box;
         padding: 0px 5px;
         margin: 5px;
-        border: 1px solid gainsboro;
+        border: 1px solid #dcdcdc57;
         border-radius: 3px;
     }
     .product .price {
@@ -63,7 +63,13 @@ body {
         border: none;
     }
 }
-
+.loader {
+    align-self: center;
+     & .title {
+        font-size: 1.2em;
+        color: #ffc107;
+     }
+}
 .btn-cart {
     padding: 5px 10px;
     align-self: flex-end;
@@ -72,3 +78,4 @@ body {
     text-align: center;
     vertical-align: middle;
 }
+

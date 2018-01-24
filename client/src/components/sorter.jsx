@@ -8,8 +8,18 @@ class Sorter extends React.Component {
                 { id: 'size', text: 'By Size' },
                 { id: 'price', text: 'By Price' },
                 { id: 'id', text: 'By Font Ids' }
-            ]
-        }
+            ],
+            selectedAction: null,
+        };
+        this.handleSelectChange = this.handleSelectChange.bind(this);
+    }
+
+    handleSelectChange(e) {
+        const selectedItem = e.target.value;
+         this.setState({selectedAction: selectedItem});
+         // call the sortAction callback which is a props 
+         // from the Products components
+         this.props.sortAction(selectedItem);
     }
 
 
@@ -18,7 +28,10 @@ class Sorter extends React.Component {
         return (
             <div className="sorter">
                 <div className="action">
-                    <select> 
+                    <select 
+                    value={state.selectedAction}
+                    onChange={this.handleSelectChange}
+                    > 
                         {
                             state.sortOptions.map((item, index) => {
                                 return (

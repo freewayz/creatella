@@ -1,7 +1,6 @@
 import React from 'react';
 import Product from './product.jsx';
 import Sorter from './sorter.jsx';
-
 import { getProducts } from '../services/product.service';
 
 class Products extends React.Component {
@@ -13,8 +12,10 @@ class Products extends React.Component {
             loadingText: 'loading.....',
             page: 1,
             limit: 20,
+            sortType: null,
         };
         this.handleBottomScroll = this.handleBottomScroll.bind(this);
+        this.handleSortAction = this.handleSortAction.bind(this);
     }
 
     componentDidMount() {
@@ -34,12 +35,23 @@ class Products extends React.Component {
             }));
         });
     }
+
+    handleSortAction(action) {
+        const currentProducts =  this.state.products;
+        currentProducts.sort((first, second) => {
+            return parseInt(first.price - second.price);
+        });
+        this.setState({
+            products: currentProducts
+        });
+    } 
+
     loadMoreProduct() {
         this.setState({
             isLoading: true
         });
         getProducts(this.state.page, this.state.limit).then((response) => {
-            if (response.data.length < 1) {
+            if (response.data.length == 0) {
                 this.setState({
                     loadingText: '~ end of catalogue ~'
                 });
@@ -70,7 +82,9 @@ class Products extends React.Component {
         const { state } = this;
         return (
             <div className="container">
-                <Sorter />
+                <Sorter
+                 sortAction={this.handleSortAction}
+                />
                 <div className="content">
                     <section className="products">
                         {

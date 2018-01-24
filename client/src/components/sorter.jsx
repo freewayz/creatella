@@ -27,24 +27,22 @@ class Sorter extends React.Component {
         const { state } = this;
         return (
             <div className="sorter">
-                <div className="action">
-                    <label>Sort By</label>
-                    <select
-                        value={state.selectedAction}
-                        onChange={this.handleSelectChange}
-                    >
-                        <option value="" selected disabled>Choose</option>
-                        {
-                            state.sortOptions.map((item, index) => {
-                                return (
-                                    <option value={item.id}>
-                                        {item.text}
-                                    </option>
-                                )
-                            })
-                        }
-                    </select>
-                </div>
+                <span className="title">
+                    Sort Product By: 
+                </span>
+                {
+                    state.sortOptions.map((item, index) => {
+                        return (
+                            <div className="action">
+                                <label>
+                                    <input type="radio" value={item.id} onChange={this.handleSelectChange} name="sort" />
+                                    {item.text}
+                                </label>
+                            </div>
+
+                        )
+                    })
+                }
             </div>
         )
     }

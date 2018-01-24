@@ -40,7 +40,13 @@ class Products extends React.Component {
     handleSortAction(byType) {
         const currentProducts =  this.state.products;
         currentProducts.sort((first, second) => {
-            return parseInt(first[byType] - second[byType]);
+            const a = first[byType], b = second[byType];
+            if (byType === 'id') {
+                // ids are string so sort by string using the local compare
+                return a.localeCompare(b)
+            }
+            // all others are numbers
+            return parseInt( a - b);
         });
         this.setState({
             products: currentProducts

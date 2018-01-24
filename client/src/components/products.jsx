@@ -1,6 +1,7 @@
 import React from 'react';
 import Product from './product.jsx';
 import Sorter from './sorter.jsx';
+import Ads from './ads.jsx';
 import { getProducts } from '../services/product.service';
 
 class Products extends React.Component {
@@ -11,7 +12,7 @@ class Products extends React.Component {
             isLoading: false,
             loadingText: 'loading.....',
             page: 1,
-            limit: 10,
+            limit: 20,
             sortType: null,
         };
         this.handleBottomScroll = this.handleBottomScroll.bind(this);
@@ -89,14 +90,21 @@ class Products extends React.Component {
                     <section className="products">
                         {
                             state.products.map((item, index) => {
-                                return (
-                                    <Product
-                                        face={item.face}
-                                        size={item.size}
-                                        price={item.price}
-                                        date={item.date}
-                                    />
-                                )
+                                // let show our add after every 20 products
+                                if (index % 20 === 0) {
+                                    return (
+                                        <Ads/>
+                                    )
+                                } else {
+                                    return (
+                                        <Product
+                                            face={item.face}
+                                            size={item.size}
+                                            price={item.price}
+                                            date={item.date}
+                                        />
+                                    )
+                                }
                             })
                         }
                     </section>

@@ -7,8 +7,8 @@
   "scripts": {
     "start": "json-server server/index.js --routes server/routes.json --middlewares server/handle-delay.js server/handle-ads.js",
     "test": "jest",
-    "dev": "webpack -p",
-    "dist": "webpack"
+    "dev": "webpack -p --watch",
+    "dist": "webpack -p"
   },
   "author": "",
   "license": "",

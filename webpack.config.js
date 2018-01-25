@@ -32,7 +32,6 @@ const config = {
     plugins: [
         new ExtractTextPlugin("styles.css"),
     ],
-    watch: true,
 }
 
 module.exports = config;

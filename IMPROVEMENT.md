@@ -5,4 +5,4 @@
 
 ## Testing
 - Mimic window scroll to bottom test case for products page
-- 
+- Test http ajax call with jest

@@ -19,5 +19,6 @@ function Product(props) {
         </div >
     )
 }
+Product.displayName = 'ProductComponent';
 
 export default Product;

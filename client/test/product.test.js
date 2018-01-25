@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import Product from '../src/components/product';
-import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -23,7 +22,7 @@ test('Product component rendered correct price and size', () => {
     ).toEqual('US $2.30 / Size 10')
 });
 
-test('Product component show right date information', () => {
+test('Product component show right date format', () => {
     expect(
         ProductComponent.find('.date').text()
     ).toEqual('3 days ago ')

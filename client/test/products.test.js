@@ -1,8 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import Products from '../src/components/products';
 import Product from '../src/components/product';
-import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -34,8 +33,8 @@ test('ProductsComponent rendered total number of products', () => {
         ProductsComponent.state().products.length
     ).toEqual(10);
     expect(
-        ProductsComponent.find('.product')
-    ).to.have.length(10)
+        ProductsComponent.find('ProductComponent').length
+    ).toEqual(10)
 });
 
 

@@ -106,7 +106,7 @@ class Products extends React.Component {
         if (reachedBottom && this.state.productsCache.length > 0) {
             // only render and prefectch product if we have 
             // some in our cache, or most likely we have 
-            // gotten and rendered all products in our catalogue
+            //rendered all products in our catalogue
             this.renderPreFetchProducts();
         }
     }

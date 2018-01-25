@@ -9,14 +9,12 @@ class Sorter extends React.Component {
                 { id: 'price', text: 'Price' },
                 { id: 'id', text: 'Font Ids' }
             ],
-            selectedAction: null,
         };
         this.handleSelectChange = this.handleSelectChange.bind(this);
     }
 
     handleSelectChange(e) {
         const selectedItem = e.target.value;
-        this.setState({ selectedAction: selectedItem });
         // call the sortAction callback which is a props 
         // from the Products components
         this.props.sortAction(selectedItem);

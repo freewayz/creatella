@@ -31,7 +31,7 @@ class Sorter extends React.Component {
                 {
                     state.sortOptions.map((item, index) => {
                         return (
-                            <div className="action">
+                            <div className="action" key={index}>
                                 <label>
                                     <input type="radio" value={item.id} onChange={this.handleSelectChange} name="sort" />
                                     {item.text}
@@ -46,4 +46,5 @@ class Sorter extends React.Component {
     }
 }
 
+Sorter.displayName = 'SorterComponent'
 export default Sorter;

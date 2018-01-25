@@ -8,5 +8,5 @@ function Ads(props) {
         </div>
     )
 }
-
+Ads.displayName = 'Ads';
 export default Ads;

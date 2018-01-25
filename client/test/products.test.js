@@ -15,6 +15,26 @@ test('ProductsComponent rendered correctly with empty products', () => {
     ).toEqual([])
 });
 
+test('ProductsComponent rendered total number of products', () => {
+    const mockProduct = [];
+    for (let i = 0; i < 10; i++) {
+        mockProduct.push(
+            {
+                date: new Date(),
+                price: 300,
+                id: '8484994-133939',
+                size: 12,
+                face: '(`` ^)'
+            }
+        )
+    }
+    ProductsComponent.setState({
+        products: mockProduct
+    })
+    expect(
+        ProductsComponent.state().products.length
+    ).toEqual(10)
+});
 
 
 

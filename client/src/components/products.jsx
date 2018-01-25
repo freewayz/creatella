@@ -130,7 +130,8 @@ class Products extends React.Component {
                                     )
                                 } else {
                                     return (
-                                        <Product
+                                        <Product 
+                                            key={index}
                                             face={item.face}
                                             size={item.size}
                                             price={item.price}

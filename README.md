@@ -5,7 +5,7 @@ This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ
 
 - The client code is based on React JS 16 
 
-## Install all depencies 
+## Install all dependencies 
 `npm install`
 
 ## How to bundle client code 

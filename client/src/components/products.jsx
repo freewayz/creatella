@@ -50,7 +50,7 @@ class Products extends React.Component {
      */
     prefetchProducts() {
         this.setState({isLoading: true});
-        getProducts(this.state.page, this.state.limit).then((response) => {
+        getProducts(this.state.page, this.state.limit, this.state.sortType).then((response) => {
             if (response.data.length == 0) {
                 this.setState((prevState, prevProps) => ({
                     productsCache: [],
@@ -88,7 +88,7 @@ class Products extends React.Component {
 
     renderPreFetchProducts() {
         this.setState((prevState, prevProps) => ({
-            products: prevState.products.concat(prevState.productCache),
+            products: prevState.products.concat(prevState.productsCache),
             productsCache: []
         }));
         // make another api call to get next products

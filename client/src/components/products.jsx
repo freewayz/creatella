@@ -49,7 +49,7 @@ class Products extends React.Component {
      * user expereince and display when we scroll to the bottom
      */
     prefetchProducts() {
-        this.setState({isLoading: true});
+        this.setState({ isLoading: true });
         getProducts(this.state.page, this.state.limit, this.state.sortType).then((response) => {
             if (response.data.length == 0) {
                 this.setState((prevState, prevProps) => ({
@@ -70,7 +70,7 @@ class Products extends React.Component {
 
 
     handleSortAction(byType) {
-        const currentProducts =  this.state.products;
+        const currentProducts = this.state.products;
         currentProducts.sort((first, second) => {
             const a = first[byType], b = second[byType];
             if (byType === 'id') {
@@ -78,13 +78,13 @@ class Products extends React.Component {
                 return a.localeCompare(b)
             }
             // all others are numbers
-            return parseInt( a - b);
+            return parseInt(a - b);
         });
         this.setState({
             products: currentProducts,
             sortType: byType,
         });
-    } 
+    }
 
     renderPreFetchProducts() {
         this.setState((prevState, prevProps) => ({
@@ -104,9 +104,8 @@ class Products extends React.Component {
         const reachedBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
         // the user has reached the bottom of the page
         if (reachedBottom && this.state.productsCache.length > 0) {
-            // only render and prefectch product if we have 
-            // some in our cache, or most likely we have 
-            //rendered all products in our catalogue
+            // only render and prefectch products if we have 
+            // producs in our cache
             this.renderPreFetchProducts();
         }
     }
@@ -116,21 +115,31 @@ class Products extends React.Component {
         return (
             <div className="container">
                 <Sorter
-                 sortAction={this.handleSortAction}
+                    sortAction={this.handleSortAction}
                 />
                 <div className="content">
                     <section className="products">
                         {
                             state.products.map((item, index) => {
-                                // let show our add after every 20 products
+                                // let show our ads after every 20 products
                                 // dont put add on the first product row
-                                if (index % 20 === 0 && index !==  0 ) {
-                                    return (
-                                        <Ads/>
-                                    )
+                                if (index % 20 === 0 && index !== 0) {
+                                    // we return an array of a Product and Ad
+                                    // so that our the products on the dom must be 
+                                    // at least 20
+                                    return [
+                                        <Product
+                                            key={index}
+                                            face={item.face}
+                                            size={item.size}
+                                            price={item.price}
+                                            date={item.date}
+                                        />,
+                                        <Ads />,
+                                    ]
                                 } else {
                                     return (
-                                        <Product 
+                                        <Product
                                             key={index}
                                             face={item.face}
                                             size={item.size}

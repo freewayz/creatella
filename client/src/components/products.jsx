@@ -125,8 +125,7 @@ class Products extends React.Component {
                                 // dont put add on the first product row
                                 if (index % 20 === 0 && index !== 0) {
                                     // we return an array of a Product and Ad
-                                    // so that our the products on the dom must be 
-                                    // at least 20
+                                    // so that our the products on the dom must be at least 20
                                     return [
                                         <Product
                                             key={index}

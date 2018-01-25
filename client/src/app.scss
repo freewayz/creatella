@@ -50,13 +50,13 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 
-    .product {
+    .product, .ad {
         display: flex;
         flex-direction: column;        
         flex: 1 1 200px;
         justify-content: space-evenly;
         align-items: center;
-        height: 230px;
+        height: 210px;
         box-sizing: border-box;
         padding: 3px 10px;
         margin: 10px .5px;
@@ -80,14 +80,12 @@ body {
         display: block;
     }
     .ad {
-        display: flex;
-        flex-direction: column;        
-        flex: 1 1 200px;
         border: none;
     }
 }
 .loader {
     align-self: center;
+
      & .title {
         font-size: 1.2em;
         color: #ffc107;

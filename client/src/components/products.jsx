@@ -9,10 +9,11 @@ class Products extends React.Component {
         super(props);
         this.state = {
             products: [],
+            productCache: [],
             isLoading: false,
             loadingText: 'loading.....',
             page: 1,
-            limit: 20,
+            limit: 50,
             sortType: null,
         };
         this.handleBottomScroll = this.handleBottomScroll.bind(this);
@@ -34,8 +35,33 @@ class Products extends React.Component {
                 products: response.data,
                 page: prevState.page + 1
             }));
+            this.prefetchProducts();
         });
     }
+
+
+    prefetchProducts() {
+        this.setState({
+            isLoading: true
+        });
+        getProducts(this.state.page, this.state.limit).then((response) => {
+            if (response.data.length == 0) {
+                this.setState((prevState, prevProps) => ({
+                    productCache: [],
+                    loadingText: '~ end of catalogue ~'
+                }));
+            } else {
+                this.setState((prevState, prevProps) => ({
+                    productCache: response.data,
+                    page: prevState.page + 1,
+                    isLoading: false
+                }));
+            }
+        }).catch((err) => {
+            //todo show some error or no product found
+        });
+    }
+
 
     handleSortAction(byType) {
         const currentProducts =  this.state.products;
@@ -53,25 +79,16 @@ class Products extends React.Component {
         });
     } 
 
-    loadMoreProduct() {
-        this.setState({
-            isLoading: true
-        });
-        getProducts(this.state.page, this.state.limit).then((response) => {
-            if (response.data.length == 0) {
-                this.setState({
-                    loadingText: '~ end of catalogue ~'
-                });
-            } else {
-                this.setState((prevState, prevProps) => ({
-                    products: prevState.products.concat(response.data),
-                    page: prevState.page + 1
-                }));
-            }
-        }).catch((err) => {
-            //todo show some error or no product found
-        });
+    renderPreFetchProducts() {
+        // only update our products state if we have 
+        // prefect some in the productsCache
+        this.setState((prevState, prevProps) => ({
+            products: prevState.products.concat(prevState.productCache),
+            productCache: [],
+        }));
+        this.prefetchProducts();
     }
+
 
     handleBottomScroll(event) {
         event.preventDefault();
@@ -79,8 +96,9 @@ class Products extends React.Component {
         const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
         const clientHeight = document.documentElement.clientHeight || window.innerHeight;
         const reachedBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-        if (reachedBottom) {
-            this.loadMoreProduct();
+        // the user has reached the bottom of the page
+        if (reachedBottom && this.state.productCache.length > 0) {
+            this.renderPreFetchProducts();
         }
     }
 
